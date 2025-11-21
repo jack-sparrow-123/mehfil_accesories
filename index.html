@@ -6,6 +6,8 @@
     <title>Mehfil Accessories</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Razorpay Checkout Script (required) -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         /* Modern Carousel Styles */
         .carousel-container {
@@ -833,6 +835,23 @@
         <!-- Products will be dynamically populated from the cart system -->
     </div>
 </section>
+<div class="overlay"></div>
+
+<div class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Your Cart <span class="cart-count">0</span></h2>
+        <button class="close-cart">×</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <div>Subtotal: ₹<span class="subtotal">0</span></div>
+            <div>Delivery: ₹30</div>
+            <div class="total-price-line">Total: ₹<span class="total-price">30</span></div>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</div>
 
 <!-- Zoom Modal -->
 <div class="zoom-modal">
