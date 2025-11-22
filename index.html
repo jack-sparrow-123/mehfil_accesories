@@ -6,1050 +6,145 @@
     <title>Mehfil Accessories</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <!-- Razorpay Checkout Script (required) -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <style>
-        /* Modern Carousel Styles */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        
-        .carousel-slide img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .carousel-slide img:hover {
-            transform: scale(1.02);
-        }
-        
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 10px;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .carousel-container:hover .carousel-controls {
-            opacity: 1;
-        }
-        
-        .carousel-btn {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-size: 18px;
-            color: #333;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-        
-        .carousel-btn:hover {
-            background: white;
-            transform: scale(1.1);
-        }
-        
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-            gap: 8px;
-        }
-        
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .indicator.active {
-            background: #ff6b6b;
-            transform: scale(1.2);
-        }
-        
-        /* Zoom Modal Styles */
-        .zoom-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .zoom-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .zoom-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .zoom-content img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s;
-        }
-        
-        .close-zoom {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 1001;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-        
-        .close-zoom:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .zoom-controls {
-            position: absolute;
-            bottom: 30px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .zoom-btn {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .zoom-btn:hover {
-            background: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Hide old thumbnail system */
-        .thumbnail-container {
-            display: none;
-        }
-        
-        /* Single image carousel styling */
-        .single-image .carousel-controls,
-        .single-image .carousel-indicators {
-            display: none !important;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .carousel-controls {
-                opacity: 1;
-            }
-        }
-    </style>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
-
-<header class="hero">
-    <div class="logo-container">
-        <div class="logo">
-            <img src="images/logo.png" alt="Mehfil Accessories Logo">
-        </div>
-        <h1 class="logo-text">Mehfil Accessories</h1>
+    <!-- Cart Icon -->
+    <div class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
     </div>
-    <p class="intro-text">
-        Welcome to Mehfil accessories by <strong>Sulekha Nabeel</strong>, your destination for uniquely curated accessories and global style finds!
-        Specializing in trendy Korean hair claws and inspired Pinterest-worthy statement pieces. We collect the best so you can shine. 
-        Discover your next favourite accessory and turn every day into a fashionable 'mehfil' gathering.
-        Forget endless scrolling; we bring the viral, Pinterest-perfect aesthetic straight to you.
-    </p>
-</header>
 
-<section class="categories">
-    <h2>Shop by Category</h2>
+    <header class="hero">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Mehfil Accessories Logo">
+            </div>
+            <h1 class="logo-text">Mehfil Accessories</h1>
+        </div>
+        <p class="intro-text">
+            Welcome to Mehfil accessories by <strong>Sulekha Nabeel</strong>, your destination for uniquely curated accessories and global style finds!
+            Specializing in trendy Korean hair claws and inspired Pinterest-worthy statement pieces. We collect the best so you can shine. 
+            Discover your next favourite accessory and turn every day into a fashionable 'mehfil' gathering.
+            Forget endless scrolling; we bring the viral, Pinterest-perfect aesthetic straight to you.
+        </p>
+    </header>
 
-    <div class="category-grid">
-        <a href="#claws" class="category-card"><img src="images/claws-cover.jpeg" alt="Claws"><span>Claws</span></a>
-        <a href="#headbands" class="category-card"><img src="images/headband-cover.jpeg" alt="Headbands"><span>Headbands</span></a>
-        <a href="#miniclaws" class="category-card"><img src="images/miniclaws-cover.jpeg" alt="Mini Claws"><span>Mini Claws</span></a>
-        <a href="#earrings" class="category-card"><img src="images/earrings-cover.jpeg" alt="Earrings"><span>Earrings</span></a>
-        <a href="#keychains" class="category-card"><img src="images/keychains-cover.jpeg" alt="Keychains"><span>Keychains</span></a>
-        <a href="#scrunchies" class="category-card"><img src="images/scrunchies-cover.jpeg" alt="Scrunchies"><span>Scrunchies</span></a>
-        <a href="#pendent" class="category-card"><img src="images/pendent-cover.jpeg" alt="Pendants"><span>Pendant</span></a>
-        <a href="#hamper" class="category-card"><img src="images/hamper-cover.jpeg" alt="Hampers"><span>Hamper</span></a>
-        <a href="#bouquet" class="category-card"><img src="images/bouquet-cover.jpeg" alt="Bouquets"><span>Bouquet</span></a>
-    </div>
-</section>
+    <section class="categories">
+        <h2>Shop by Category</h2>
 
-<!-- BEGIN PRODUCT CATEGORIES -->
-
-<section id="claws" class="product-category">
-    <h2>Claws</h2>
-    <div class="product-grid">
-
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw1.jpeg" alt="Large Rhinestone Claw Clip - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/large1.jpeg" alt="Large Rhinestone Claw Clip - View 2">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/large2.jpeg" alt="Large Rhinestone Claw Clip - View 3">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/large4.jpeg" alt="Large Rhinestone Claw Clip - View 4">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw1.jpeg" data-alt="Large Rhinestone Claw Clip - View 1"><img src="images/claw1.jpeg" alt="Thumbnail 1"></div>
-                    <div class="thumbnail" data-image="images/large1.jpeg" data-alt="Large Rhinestone Claw Clip - View 2"><img src="images/large1.jpeg" alt="Thumbnail 2"></div>
-                    <div class="thumbnail" data-image="images/large2.jpeg" data-alt="Large Rhinestone Claw Clip - View 3"><img src="images/large2.jpeg" alt="Thumbnail 3"></div>
-                    <div class="thumbnail" data-image="images/large4.jpeg" data-alt="Large Rhinestone Claw Clip - View 4"><img src="images/large4.jpeg" alt="Thumbnail 4"></div>
-                </div>
-            </div>
-            <h3>Large Rhinestone Claw Clip</h3>
-            <p>₹90</p>
-            <button class="add-to-cart" data-id="1" data-name="Large Rhinestone Claw Clip" data-price="90" data-image="images/claw1.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw2.jpeg" alt="Glass Flower Claws - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/glass1.jpeg" alt="Glass Flower Claws - View 2">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/glass2.jpeg" alt="Glass Flower Claws - View 3">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw2.jpeg" data-alt="Glass Flower Claws - View 1"><img src="images/claw2.jpeg" alt="Thumbnail 1"></div>
-                    <div class="thumbnail" data-image="images/glass1.jpeg" data-alt="Glass Flower Claws - View 2"><img src="images/glass1.jpeg" alt="Thumbnail 2"></div>
-                    <div class="thumbnail" data-image="images/glass2.jpeg" data-alt="Glass Flower Claws - View 3"><img src="images/glass2.jpeg" alt="Thumbnail 3"></div>
-                </div>
-            </div>
-            <h3>Glass Flower Claws</h3>
-            <p>₹20</p>
-            <button class="add-to-cart" data-id="2" data-name="Glass Flower Claws" data-price="20" data-image="images/claw2.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw3.jpeg" alt="Double Daisy Flower Claw">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw3.jpeg" data-alt="Double Daisy Flower Claw"><img src="images/claw3.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Double Daisy Flower Claw</h3>
-            <p>₹40</p>
-            <button class="add-to-cart" data-id="3" data-name="Double Daisy Flower Claw" data-price="40" data-image="images/claw3.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw4.jpeg" alt="Flower Claws - View 1">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw4.jpeg" data-alt="Flower Claws - View 1"><img src="images/claw4.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Flower Claws</h3>
-            <p>₹20</p>
-            <button class="add-to-cart" data-id="4" data-name="Flower Claws" data-price="20" data-image="images/claw4.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw5.jpeg" alt="Hair Claws - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/hair2.jpeg" alt="Hair Claws - View 2">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/hair5.jpeg" alt="Hair Claws - View 3">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw5.jpeg" data-alt="Hair Claws - View 1"><img src="images/claw5.jpeg" alt="Thumbnail 1"></div>
-                    <div class="thumbnail" data-image="images/hair2.jpeg" data-alt="Hair Claws - View 2"><img src="images/hair2.jpeg" alt="Thumbnail 2"></div>
-                    <div class="thumbnail" data-image="images/hair5.jpeg" data-alt="Hair Claws - View 3"><img src="images/hair5.jpeg" alt="Thumbnail 3"></div>
-                </div>
-            </div>
-            <h3>Hair Claws</h3>
-            <p>₹34</p>
-            <button class="add-to-cart" data-id="5" data-name="Hair Claws" data-price="34" data-image="images/claw5.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw6.jpeg" alt="Pinterest Glossy Hair Claws">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw6.jpeg" data-alt="Pinterest Glossy Hair Claws"><img src="images/claw6.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Pinterest Glossy Hair Claws</h3>
-            <p>₹30</p>
-            <button class="add-to-cart" data-id="6" data-name="Pinterest Glossy Hair Claws" data-price="30" data-image="images/claw6.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw7.jpeg" alt="Trending Flower Claw - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/trending1.jpeg" alt="Trending Flower Claw - View 2">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw7.jpeg" data-alt="Trending Flower Claw - View 1"><img src="images/claw7.jpeg" alt="Thumbnail 1"></div>
-                    <div class="thumbnail" data-image="images/trending1.jpeg" data-alt="Trending Flower Claw - View 2"><img src="images/trending1.jpeg" alt="Thumbnail 2"></div>
-                </div>
-            </div>
-            <h3>Trending Flower Claw</h3>
-            <p>₹30</p>
-            <button class="add-to-cart" data-id="7" data-name="Trending Flower Claw" data-price="30" data-image="images/claw7.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/claw8.jpeg" alt="Medium Viral Flower Claws">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/claw8.jpeg" data-alt="Medium Viral Flower Claws"><img src="images/claw8.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Medium Viral Flower Claws</h3>
-            <p>₹20</p>
-            <button class="add-to-cart" data-id="8" data-name="Medium Viral Flower Claws" data-price="20" data-image="images/claw8.jpeg">Add to Cart</button>
+        <!-- Delivery Charge Information -->
+        <div class="delivery-info">
+            <h4>🚚 Delivery Charges</h4>
+            <ul class="delivery-rules">
+                <li><i class="fas fa-shipping-fast"></i> Orders under ₹200: ₹45 delivery</li>
+                <li><i class="fas fa-truck"></i> Orders ₹200-₹500: ₹35 delivery</li>
+                <li><i class="fas fa-box"></i> Orders above ₹500: FREE delivery</li>
+            </ul>
         </div>
 
-    </div>
-</section>
+        <div class="category-grid">
+            <a href="#claws" class="category-card" data-category="claws"><img src="images/claws-cover.jpeg" alt="Claws"><span>Claws</span></a>
+            <a href="#headbands" class="category-card" data-category="headbands"><img src="images/headband-cover.jpeg" alt="Headbands"><span>Headbands</span></a>
+            <a href="#miniclaws" class="category-card" data-category="miniclaws"><img src="images/miniclaws-cover.jpeg" alt="Mini Claws"><span>Mini Claws</span></a>
+            <a href="#earrings" class="category-card" data-category="earrings"><img src="images/earrings-cover.jpeg" alt="Earrings"><span>Earrings</span></a>
+            <a href="#keychains" class="category-card" data-category="keychains"><img src="images/keychains-cover.jpeg" alt="Keychains"><span>Keychains</span></a>
+            <a href="#scrunchies" class="category-card" data-category="scrunchies"><img src="images/scrunchies-cover.jpeg" alt="Scrunchies"><span>Scrunchies</span></a>
+            <a href="#pendent" class="category-card" data-category="pendent"><img src="images/pendent-cover.jpeg" alt="Pendants"><span>Pendant</span></a>
+            <a href="#hamper" class="category-card" data-category="hamper"><img src="images/hamper-cover.jpeg" alt="Hampers"><span>Hamper</span></a>
+            <a href="#bouquet" class="category-card" data-category="bouquet"><img src="images/bouquet-cover.jpeg" alt="Bouquets"><span>Bouquet</span></a>
+        </div>
+    </section>
 
-<section id="headbands" class="product-category">
-    <h2>Headbands / Hair Ties</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/head1.jpeg" alt="Bun Hair Ties">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/head1.jpeg" data-alt="Bun Hair Ties"><img src="images/head1.jpeg" alt="Thumbnail 1"></div>
-                </div>
+    <!-- Category Popup Modal -->
+    <div class="category-popup">
+        <div class="category-popup-content">
+            <button class="close-category-popup">&times;</button>
+            <div class="category-popup-header">
+                <h2 id="popup-category-title">Category Products</h2>
             </div>
-            <h3>Bun Hair Ties (set of 6)</h3>
-            <p>₹10</p>
-            <button class="add-to-cart" data-id="9" data-name="Bun Hair Ties (set of 6)" data-price="10" data-image="images/head1.jpeg">Add to Cart</button>
+            <div class="product-grid" id="popup-product-grid">
+                <!-- Products will be loaded here dynamically -->
+            </div>
         </div>
     </div>
-</section>
 
-<section id="miniclaws" class="product-category">
-    <h2>Mini Claws</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/min1.jpeg" alt="Heart Mini Claws">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/min1.jpeg" data-alt="Heart Mini Claws"><img src="images/min1.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Heart Mini Claws</h3>
-            <p>₹15</p>
-            <button class="add-to-cart" data-id="10" data-name="Heart Mini Claws" data-price="15" data-image="images/min1.jpeg">Add to Cart</button>
+    <!-- All Products Section -->
+    <section id="all-products" class="product-category">
+        <h2>All Products ✨</h2>
+        <p class="hint">Everything in one place 💗</p>
+        <div class="product-grid" id="all-products-grid">
+            <!-- Products will be dynamically populated -->
         </div>
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/min2.jpeg" alt="Mini Butterfly Clips">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/min2.jpeg" data-alt="Mini Butterfly Clips"><img src="images/min2.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Mini Butterfly Clips</h3>
-            <p>₹10</p>
-            <button class="add-to-cart" data-id="11" data-name="Mini Butterfly Clips" data-price="10" data-image="images/min2.jpeg">Add to Cart</button>
+    </section>
+
+    <div class="overlay"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart <span class="cart-count">0</span></h2>
+            <button class="close-cart">×</button>
         </div>
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/min3.jpeg" alt="Cute Flower Mini Claws - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/flower6.jpeg" alt="Cute Flower Mini Claws - View 2">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <div>Subtotal: ₹<span class="subtotal">0</span></div>
+                <div class="delivery-charge-line">Delivery: ₹<span class="delivery-charge">45</span></div>
+                <div class="delivery-breakdown">
+                    <p><small>Orders under ₹200: ₹45 delivery</small></p>
+                    <p><small>Orders ₹200-₹500: ₹35 delivery</small></p>
+                    <p><small>Orders above ₹500: FREE delivery</small></p>
                 </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/min3.jpeg" data-alt="Cute Flower Mini Claws"><img src="images/min3.jpeg" alt="Thumbnail 1"></div>
-                </div>
+                <div class="total-price-line">Total: ₹<span class="total-price">45</span></div>
             </div>
-            <h3>Cute Flower Mini Claws</h3>
-            <p>₹15</p>
-            <button class="add-to-cart" data-id="12" data-name="Cute Flower Mini Claws" data-price="15" data-image="images/min3.jpeg">Add to Cart</button>
+            <button class="checkout-btn">Proceed to Checkout</button>
         </div>
     </div>
-</section>
 
-<section id="earrings" class="product-category">
-    <h2>Earrings</h2>
-    <div class="product-grid">
-
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/ear1.jpeg" alt="Tear Drop Earrings - Green & Pink - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/ear5.jpeg" alt="Tear Drop Earrings - Green & Pink - View 2">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/ear1.jpeg" data-alt="Tear Drop Earrings - Green & Pink - View 1"><img src="images/ear1.jpeg" alt="Green Tear Drop Earrings"></div>
-                    <div class="thumbnail" data-image="images/ear5.jpeg" data-alt="Tear Drop Earrings - Green & Pink - View 2"><img src="images/ear5.jpeg" alt="Pink Tear Drop Earrings"></div>
-                </div>
-            </div>
-            <h3>Tear Drop Earrings</h3>
-            <p>₹40 (Green & Pink)</p>
-            <button class="add-to-cart" data-id="13" data-name="Tear Drop Earrings (Green & Pink)" data-price="40" data-image="images/ear1.jpeg">Add to Cart</button>
+    <!-- Zoom Modal -->
+    <div class="zoom-modal">
+        <button class="close-zoom">&times;</button>
+        <div class="zoom-content">
+            <img src="" alt="Zoomed Product Image">
         </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/ear2.jpeg" alt="Starfish Earrings">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/ear2.jpeg" data-alt="Starfish Earrings"><img src="images/ear2.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Starfish Earrings</h3>
-            <p>₹40 (Multiple colors available)</p>
-            <button class="add-to-cart" data-id="14" data-name="Starfish Earrings" data-price="40" data-image="images/ear2.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/ear3.jpeg" alt="Daisy Earrings">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/ear3.jpeg" data-alt="Daisy Earrings"><img src="images/ear3.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Daisy Earrings</h3>
-            <p>₹40 (Multiple colors available)</p>
-            <button class="add-to-cart" data-id="15" data-name="Daisy Earrings (Multiple colours)" data-price="40" data-image="images/ear3.jpeg">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/ear4.jpeg" alt="Smiley Flower Earrings">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/ear4.jpeg" data-alt="Smiley Flower Earrings"><img src="images/ear4.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Smiley Flower Earrings</h3>
-            <p>₹40 (Multiple colors available)</p>
-            <button class="add-to-cart" data-id="16" data-name="Smiley Flower Earrings (Multiple colours)" data-price="40" data-image="images/ear4.jpeg">Add to Cart</button>
-        </div>
-
-    </div>
-</section>
-
-<section id="keychains" class="product-category">
-    <h2>Keychains</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/key1.jpeg" alt="Light & Image Reflection Charms - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/chain1.jpeg" alt="Light & Image Reflection Charms - View 2">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/chain2.jpeg" alt="Light & Image Reflection Charms - View 3">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/chain4.jpeg" alt="Light & Image Reflection Charms - View 4">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/chain5.jpeg" alt="Light & Image Reflection Charms - View 5">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/chain6.jpeg" alt="Light & Image Reflection Charms - View 6">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/chain7.jpeg" alt="Light & Image Reflection Charms - View 7">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/key1.jpeg" data-alt="Light & Image Reflection Charms - View 1"><img src="images/key1.jpeg" alt="Thumbnail 1"></div>
-                    <div class="thumbnail" data-image="images/chain1.jpeg" data-alt="Light & Image Reflection Charms - View 2"><img src="images/chain1.jpeg" alt="Thumbnail 2"></div>
-                    <div class="thumbnail" data-image="images/chain2.jpeg" data-alt="Light & Image Reflection Charms - View 3"><img src="images/chain2.jpeg" alt="Thumbnail 3"></div>
-                    <div class="thumbnail" data-image="images/chain4.jpeg" data-alt="Light & Image Reflection Charms - View 4"><img src="images/chain4.jpeg" alt="Thumbnail 4"></div>
-                    <div class="thumbnail" data-image="images/chain5.jpeg" data-alt="Light & Image Reflection Charms - View 5"><img src="images/chain5.jpeg" alt="Thumbnail 5"></div>
-                    <div class="thumbnail" data-image="images/chain6.jpeg" data-alt="Light & Image Reflection Charms - View 6"><img src="images/chain6.jpeg" alt="Thumbnail 6"></div>
-                    <div class="thumbnail" data-image="images/chain7.jpeg" data-alt="Light & Image Reflection Charms - View 7"><img src="images/chain7.jpeg" alt="Thumbnail 7"></div>
-                </div>
-            </div>
-            <h3>Light & Image Reflection Charms</h3>
-            <p>₹99</p>
-            <button class="add-to-cart" data-id="17" data-name="Light & Image Reflection Charms" data-price="99" data-image="images/key1.jpeg">Add to Cart</button>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-in">Zoom In</button>
+            <button class="zoom-btn" id="zoom-out">Zoom Out</button>
+            <button class="zoom-btn" id="reset-zoom">Reset</button>
         </div>
     </div>
-</section>
 
-<section id="scrunchies" class="product-category">
-    <h2>Scrunchies</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/scrunchie1.jpeg" alt="Scrunchies">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/scrunchie1.jpeg" data-alt="Scrunchies"><img src="images/scrunchie1.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Scrunchies</h3>
-            <p>₹12 (Blue, Yellow, Orange, Pink)</p>
-            <button class="add-to-cart" data-id="18" data-name="Scrunchies (Blue, Yellow, Orange, Pink)" data-price="12" data-image="images/scrunchie1.jpeg">Add to Cart</button>
-        </div>
-    </div>
-</section>
+    <script src="script.js"></script>
+    <div class="sparkle-container" id="sparkle-container"></div>
 
-<section id="pendent" class="product-category">
-    <h2>Pendant</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/pend1.jpeg" alt="Pendant - View 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="images/pendent2.jpeg" alt="Pendant - View 2">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/pend1.jpeg" data-alt="Pendant - View 1"><img src="images/pend1.jpeg" alt="Thumbnail 1"></div>
-                    <div class="thumbnail" data-image="images/pendent2.jpeg" data-alt="Pendant - View 2"><img src="images/pendent2.jpeg" alt="Thumbnail 2"></div>
-                </div>
-            </div>
-            <h3>Pendant</h3>
-            <p>₹40</p>
-            <button class="add-to-cart" data-id="19" data-name="Pendant" data-price="40" data-image="images/pend1.jpeg">Add to Cart</button>
-        </div>
-    </div>
-</section>
+  <div class="sparkle-container" id="sparkle-container"></div>
 
-<section id="hamper" class="product-category">
-    <h2>Hamper</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/hamper.jpeg" alt="Gift Hamper">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/hamper.jpeg" data-alt="Gift Hamper"><img src="images/hamper.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Gift Hamper</h3>
-            <p>₹99</p>
-            <button class="add-to-cart" data-id="20" data-name="Gift Hamper" data-price="99" data-image="images/hamper.jpeg">Add to Cart</button>
-        </div>
-    </div>
-</section>
+  <script>
+    const container = document.getElementById('sparkle-container');
 
-<section id="bouquet" class="product-category">
-    <h2>Flower Claw Bouquet</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-gallery">
-                <div class="carousel-container single-image">
-                    <div class="carousel-track">
-                        <div class="carousel-slide">
-                            <img src="images/bouquet.jpeg" alt="Customizable Flower Claw Bouquet">
-                        </div>
-                    </div>
-                </div>
-                <!-- Original thumbnail container (hidden) -->
-                <div class="thumbnail-container">
-                    <div class="thumbnail active" data-image="images/bouquet.jpeg" data-alt="Customizable Flower Claw Bouquet"><img src="images/bouquet.jpeg" alt="Thumbnail 1"></div>
-                </div>
-            </div>
-            <h3>Customizable Flower Claw Bouquet</h3>
-            <p>₹500 Starting</p>
-            <button class="add-to-cart" data-id="21" data-name="Customizable Flower Claw Bouquet" data-price="500" data-image="images/bouquet.jpeg">Add to Cart</button>
-        </div>
-    </div>
-</section>
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.top = Math.random() * window.innerHeight + 'px';
+      sparkle.style.left = Math.random() * window.innerWidth + 'px';
+      sparkle.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
+      container.appendChild(sparkle);
 
-<!-- ALL PRODUCTS SECTION -->
-<section id="all-products" class="product-category">
-    <h2>All Products ✨</h2>
-    <p class="hint">Everything in one place 💗</p>
-    
-    <div class="product-grid">
-        <!-- Products will be dynamically populated from the cart system -->
-    </div>
-</section>
-<div class="overlay"></div>
-
-<div class="cart-sidebar">
-    <div class="cart-header">
-        <h2>Your Cart <span class="cart-count">0</span></h2>
-        <button class="close-cart">×</button>
-    </div>
-    <div class="cart-items"></div>
-    <div class="cart-footer">
-        <div class="cart-total">
-            <div>Subtotal: ₹<span class="subtotal">0</span></div>
-            <div>Delivery: ₹30</div>
-            <div class="total-price-line">Total: ₹<span class="total-price">30</span></div>
-        </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
-    </div>
-</div>
-
-<!-- Zoom Modal -->
-<div class="zoom-modal">
-    <button class="close-zoom">&times;</button>
-    <div class="zoom-content">
-        <img src="" alt="Zoomed Product Image">
-    </div>
-    <div class="zoom-controls">
-        <button class="zoom-btn" id="zoom-in">Zoom In</button>
-        <button class="zoom-btn" id="zoom-out">Zoom Out</button>
-        <button class="zoom-btn" id="reset-zoom">Reset</button>
-    </div>
-</div>
-
-<script>
-// Modern Carousel Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all carousels
-    const carousels = document.querySelectorAll('.carousel-container');
-    
-    carousels.forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
-        const slides = Array.from(track.children);
-        const prevBtn = carousel.querySelector('.prev-btn');
-        const nextBtn = carousel.querySelector('.next-btn');
-        const indicators = carousel.parentElement.querySelector('.carousel-indicators');
-        
-        let currentIndex = 0;
-        const slideCount = slides.length;
-        
-        // Only add controls if there's more than one image
-        if (slideCount <= 1) {
-            // Add single-image class for CSS handling
-            carousel.classList.add('single-image');
-            return;
-        }
-        
-        // Update slide position
-        function updateSlidePosition() {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Update indicators
-            if (indicators) {
-                const indicatorDots = indicators.querySelectorAll('.indicator');
-                indicatorDots.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentIndex);
-                });
-            }
-        }
-        
-        // Next slide
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateSlidePosition();
-        }
-        
-        // Previous slide
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-            updateSlidePosition();
-        }
-        
-        // Event listeners
-        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-        
-        // Indicator clicks
-        if (indicators) {
-            const indicatorDots = indicators.querySelectorAll('.indicator');
-            indicatorDots.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateSlidePosition();
-                });
-            });
-        }
-        
-        // Auto-advance (optional)
-        // setInterval(nextSlide, 5000);
-        
-        // Swipe functionality for touch devices
-        let startX = 0;
-        let endX = 0;
-        
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-        
-        track.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-            handleSwipe();
-        });
-        
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            
-            if (startX - endX > swipeThreshold) {
-                // Swipe left - next slide
-                nextSlide();
-            } else if (endX - startX > swipeThreshold) {
-                // Swipe right - previous slide
-                prevSlide();
-            }
-        }
-    });
-    
-    // Zoom Functionality
-    const zoomModal = document.querySelector('.zoom-modal');
-    const zoomImage = zoomModal.querySelector('img');
-    const closeZoom = zoomModal.querySelector('.close-zoom');
-    const zoomInBtn = document.getElementById('zoom-in');
-    const zoomOutBtn = document.getElementById('zoom-out');
-    const resetZoomBtn = document.getElementById('reset-zoom');
-    
-    let currentZoom = 1;
-    const zoomStep = 0.2;
-    const maxZoom = 3;
-    const minZoom = 0.5;
-    
-    // Open zoom modal
-    document.querySelectorAll('.carousel-slide img').forEach(img => {
-        img.addEventListener('click', function() {
-            zoomImage.src = this.src;
-            zoomImage.alt = this.alt;
-            currentZoom = 1;
-            zoomImage.style.transform = `scale(${currentZoom})`;
-            zoomModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        });
-    });
-    
-    // Close zoom modal
-    function closeZoomModal() {
-        zoomModal.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
+      // remove after animation
+      setTimeout(() => {
+        sparkle.remove();
+      }, 2500);
     }
-    
-    closeZoom.addEventListener('click', closeZoomModal);
-    
-    // Zoom in
-    zoomInBtn.addEventListener('click', () => {
-        if (currentZoom < maxZoom) {
-            currentZoom += zoomStep;
-            zoomImage.style.transform = `scale(${currentZoom})`;
-        }
-    });
-    
-    // Zoom out
-    zoomOutBtn.addEventListener('click', () => {
-        if (currentZoom > minZoom) {
-            currentZoom -= zoomStep;
-            zoomImage.style.transform = `scale(${currentZoom})`;
-        }
-    });
-    
-    // Reset zoom
-    resetZoomBtn.addEventListener('click', () => {
-        currentZoom = 1;
-        zoomImage.style.transform = `scale(${currentZoom})`;
-    });
-    
-    // Close modal when clicking outside the image
-    zoomModal.addEventListener('click', (e) => {
-        if (e.target === zoomModal) {
-            closeZoomModal();
-        }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && zoomModal.classList.contains('active')) {
-            closeZoomModal();
-        }
-    });
-    
-    // Add to cart functionality (placeholder)
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const productName = this.getAttribute('data-name');
-            const productPrice = this.getAttribute('data-price');
-            
-            // Visual feedback
-            const originalText = this.textContent;
-            this.textContent = 'Added to Cart!';
-            this.style.background = '#4caf50';
-            
-            setTimeout(() => {
-                this.textContent = originalText;
-                this.style.background = '#ff6b6b';
-            }, 1500);
-            
-            console.log(`Added ${productName} to cart for ₹${productPrice}`);
-            // In a real implementation, you would update a cart object or send to a server
-        });
-    });
-});
-</script>
 
-<script src="script.js"></script>
+    // generate sparkles continuously across the whole viewport
+    setInterval(() => {
+      for (let i = 0; i < 5; i++) { // spawn multiple sparkles at once
+        createSparkle();
+      }
+    }, 200);
+  </script>
+
+
 </body>
 </html>
